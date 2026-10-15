@@ -65,6 +65,23 @@ Ver `evals/evals.json`: 6 casos (4 que deben disparar la Skill, 2 que no). Se us
 
 El frontmatter YAML contiene `name` y `description`; la carpeta sigue la estructura del estándar. Validable con el `quick_validate.py` de `skill-creator`.
 
+Resultado:
+
+```
+$ python .../quick_validate.py .agents/skills/auditor-tecnico-proyectos
+Skill is valid!
+```
+
+### 5.4 Prueba integrada de extremo a extremo
+
+Se ejecutó el flujo completo sobre un proyecto ficticio con riesgos intencionales (`examples/proyecto-demo`):
+
+1. **Inventario:** el escáner reportó `env_versionado: [".env"]`, `posibles_secretos: ["src\\db.py"]`, `pendientes: 2` y el manifiesto `requirements.txt`.
+2. **Evaluación:** se puntuaron las 8 dimensiones con evidencia.
+3. **Informe:** se generó `examples/proyecto-demo/informe-auditoria.md` con 5 hallazgos priorizados (2 de severidad Alta).
+
+Esto demuestra el funcionamiento de la Skill de extremo a extremo a nivel lógico. La validación dentro de la interfaz de Gemini/Antigravity se realiza como paso final de integración (ver sección 6).
+
 ## 6. Resultados y limitaciones
 
 - **Resultado:** la Skill produce un inventario reproducible y un informe estructurado; el criterio experto queda capturado y versionado.

@@ -1,0 +1,28 @@
+{
+  "raiz": "C:\\Users\\Juan\\Desktop\\Proyectos\\IA_Seguimiento_2\\skill-asistente-profesional\\examples\\proyecto-demo",
+  "total_archivos": 6,
+  "total_lineas_codigo": 22,
+  "archivos_por_lenguaje": {
+    "Python": 2,
+    "Markdown": 1,
+    "JavaScript": 1
+  },
+  "lineas_por_lenguaje": {
+    "Python": 17,
+    "JavaScript": 3,
+    "Markdown": 2
+  },
+  "manifiestos": [
+    "requirements.txt"
+  ],
+  "senales_riesgo": {
+    "env_versionado": [
+      ".env"
+    ],
+    "posibles_secretos": [
+      "src\\db.py"
+    ],
+    "pendientes": 2,
+    "archivos_pesados": []
+  }
+}

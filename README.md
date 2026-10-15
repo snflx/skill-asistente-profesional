@@ -63,6 +63,7 @@ skill-asistente-profesional/
 ├── notebooks/cuaderno_datos.ipynb               # Cuaderno de datos
 ├── evals/evals.json                             # Pruebas de disparo de la Skill
 ├── examples/reporte_scan_ejemplo.json           # Salida de ejemplo del escáner
+├── examples/proyecto-demo/                      # Prueba integrada (informe + scan)
 ├── index.html                                   # Landing page
 ├── AGENTS.md                                    # Guía para agentes en el repo
 └── README.md
@@ -82,11 +83,16 @@ skill-asistente-profesional/
 
 > Los entregables 1 y 2 se producen en herramientas externas (ChatGPT y Flow); en este repositorio se incluye el **contenido y los prompts listos** para generarlos.
 
+**Prueba integrada (Paso 6):** la Skill se ejecutó de extremo a extremo sobre un proyecto demo, produciendo un informe real con hallazgos priorizados — ver [`examples/proyecto-demo/informe-auditoria.md`](examples/proyecto-demo/informe-auditoria.md).
+
 ## Cómo validar
 
 ```bash
 # Escáner (debe imprimir un JSON con el inventario)
 python .agents/skills/auditor-tecnico-proyectos/scripts/escanear_proyecto.py .agents/skills/auditor-tecnico-proyectos
+
+# Prueba integrada sobre un proyecto demo (ver examples/proyecto-demo/)
+python .agents/skills/auditor-tecnico-proyectos/scripts/escanear_proyecto.py examples/proyecto-demo
 
 # Cuaderno de datos (ejecuta y regenera gráficos)
 python -m jupyter nbconvert --execute --to notebook --inplace notebooks/cuaderno_datos.ipynb
