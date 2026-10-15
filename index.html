@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Skills Integrados a Gemini — Auditor Técnico de Proyectos</title>
+<meta name="description" content="Skill de Gemini para auditoría técnica de proyectos de software. Actividad de Seguimiento — Ingeniería de Sistemas / TI." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0B1E3B;
+    --ink-2:#0f2748;
+    --panel:#12233f;
+    --line:rgba(148,180,220,.16);
+    --line-strong:rgba(148,180,220,.34);
+    --teal:#12B5A5;
+    --teal-soft:rgba(18,181,165,.14);
+    --amber:#F2A63B;
+    --paper:#F7F9FC;
+    --muted:#8fa7c6;
+    --display:"Chakra Petch",sans-serif;
+    --body:"IBM Plex Sans",system-ui,sans-serif;
+    --mono:"JetBrains Mono",monospace;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--ink);color:var(--paper);
+    font-family:var(--body);font-weight:300;line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse 100% 80% at 50% 0%,#000 30%,transparent 100%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+    background:
+      radial-gradient(680px 380px at 82% -5%,rgba(18,181,165,.20),transparent 60%),
+      radial-gradient(560px 360px at 8% 12%,rgba(242,166,59,.10),transparent 62%);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:inherit}
+  ::selection{background:var(--teal);color:var(--ink)}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(12px);
+    background:linear-gradient(180deg,rgba(11,30,59,.92),rgba(11,30,59,.62));
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;letter-spacing:.14em;font-size:.82rem;text-transform:uppercase}
+  .brand .dot{width:11px;height:11px;background:var(--teal);box-shadow:0 0 14px var(--teal);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+  nav ul a{color:var(--muted);text-decoration:none;transition:.2s}
+  nav ul a:hover{color:var(--teal)}
+  @media(max-width:820px){nav ul{display:none}}
+
+  /* hero */
+  header{padding:104px 0 80px;position:relative}
+  .kicker{font-family:var(--mono);font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin:0 0 22px;display:flex;align-items:center;gap:14px}
+  .kicker::before{content:"";width:42px;height:1px;background:var(--teal)}
+  h1{
+    font-family:var(--display);font-weight:700;line-height:.98;
+    font-size:clamp(2.6rem,7.4vw,5.4rem);letter-spacing:-.01em;margin:0 0 26px;text-transform:uppercase;
+  }
+  h1 em{font-style:normal;color:var(--teal);text-shadow:0 0 34px rgba(18,181,165,.45)}
+  h1 .amber{color:var(--amber)}
+  .lede{font-size:clamp(1.02rem,2vw,1.28rem);color:#c9d8ec;max-width:60ch;margin:0 0 38px}
+  .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;
+    padding:14px 24px;text-decoration:none;border:1px solid var(--line-strong);
+    display:inline-flex;align-items:center;gap:10px;transition:.22s;background:transparent;color:var(--paper);cursor:pointer;
+  }
+  .btn:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+  .btn.solid{background:var(--teal);color:var(--ink);border-color:var(--teal);font-weight:700}
+  .btn.solid:hover{box-shadow:0 12px 34px rgba(18,181,165,.34);color:var(--ink)}
+
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+
+  /* terminal card */
+  .term{
+    border:1px solid var(--line-strong);background:linear-gradient(160deg,rgba(18,35,63,.96),rgba(11,30,59,.96));
+    box-shadow:24px 24px 0 rgba(0,0,0,.28),0 0 60px rgba(18,181,165,.08);
+    transform:rotate(1.1deg);
+  }
+  .term .bar{display:flex;gap:8px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+  .term .bar i{width:11px;height:11px;border-radius:50%;background:#2a3f61;display:block}
+  .term .bar i:nth-child(1){background:#F2A63B}
+  .term pre{margin:0;padding:20px 18px;font-family:var(--mono);font-size:.78rem;line-height:1.85;color:#bfe6de;overflow:auto}
+  .term .c{color:var(--muted)}
+  .term .t{color:var(--teal)}
+  .term .a{color:var(--amber)}
+  .term .ok{color:#7fe0b0}
+
+  section{padding:88px 0;border-top:1px solid var(--line);position:relative}
+  .sec-num{font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;color:var(--amber);text-transform:uppercase}
+  h2{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,4vw,3rem);line-height:1.02;margin:14px 0 18px;text-transform:uppercase;letter-spacing:-.005em}
+  h2 em{font-style:normal;color:var(--teal)}
+  .sub{color:#c2d2e8;max-width:64ch;margin:0 0 46px;font-size:1.05rem}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:900px){.cards{grid-template-columns:1fr}}
+  .card{
+    border:1px solid var(--line);background:rgba(18,35,63,.5);padding:30px 26px;position:relative;
+    transition:.25s;overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--teal);transition:.35s}
+  .card:hover{border-color:var(--line-strong);transform:translateY(-4px);background:rgba(18,35,63,.78)}
+  .card:hover::before{width:100%}
+  .card .num{font-family:var(--mono);font-size:.72rem;color:var(--amber);letter-spacing:.18em}
+  .card h3{font-family:var(--display);font-weight:600;font-size:1.16rem;margin:14px 0 10px;text-transform:uppercase;letter-spacing:.02em}
+  .card p{margin:0;color:#b9cae1;font-size:.95rem}
+  .card code{font-family:var(--mono);font-size:.85em;color:var(--teal);background:var(--teal-soft);padding:2px 7px}
+
+  /* folder diagram */
+  .folder{display:grid;grid-template-columns:minmax(0,280px) 1fr;gap:40px;align-items:center;border:1px dashed var(--line-strong);padding:34px;background:rgba(11,30,59,.5)}
+  @media(max-width:860px){.folder{grid-template-columns:1fr;gap:26px}}
+  .folder pre{margin:0;font-family:var(--mono);font-size:.84rem;line-height:2;color:#cfe0f4}
+  .folder pre b{color:var(--teal);font-weight:500}
+  .folder pre .dim{color:var(--muted)}
+  .folder p{margin:0 0 14px;color:#c2d2e8}
+  .folder p:last-child{margin-bottom:0}
+
+  /* life cycle */
+  .cycle{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+  @media(max-width:820px){.cycle{grid-template-columns:1fr}}
+  .step{counter-increment:step;border:1px solid var(--line);padding:28px 24px 26px;position:relative;background:rgba(18,35,63,.42)}
+  .step::before{content:"0" counter(step);font-family:var(--display);font-weight:700;font-size:2.6rem;color:rgba(18,181,165,.28);line-height:1;display:block;margin-bottom:10px}
+  .step h3{font-family:var(--display);font-size:1.05rem;text-transform:uppercase;letter-spacing:.04em;margin:0 0 8px;color:var(--teal)}
+  .step p{margin:0;color:#b9cae1;font-size:.93rem}
+
+  /* the skill */
+  .skill-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+  @media(max-width:920px){.skill-grid{grid-template-columns:1fr;gap:32px}}
+  .flow{list-style:none;margin:0;padding:0}
+  .flow li{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .flow li:last-child{border-bottom:0}
+  .flow .tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--ink);background:var(--teal);padding:5px 9px;height:fit-content;text-transform:uppercase}
+  .flow b{font-family:var(--display);font-weight:600;color:var(--paper);display:block;text-transform:uppercase;letter-spacing:.02em;font-size:1rem}
+  .flow span{color:#b9cae1;font-size:.93rem}
+  .code-block{border:1px solid var(--line-strong);background:#0a1730;box-shadow:14px 14px 0 rgba(0,0,0,.24)}
+  .code-block .bar{padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;justify-content:space-between}
+  .code-block pre{margin:0;padding:18px;font-family:var(--mono);font-size:.76rem;line-height:1.8;color:#bfe6de;overflow:auto}
+  .code-block .c{color:var(--muted)}
+  .code-block .t{color:var(--teal)}
+
+  /* deliverables */
+  .deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:820px){.deliv{grid-template-columns:1fr}}
+  .deliv a{
+    display:flex;justify-content:space-between;align-items:center;gap:18px;
+    border:1px solid var(--line);padding:22px 24px;text-decoration:none;transition:.22s;background:rgba(18,35,63,.4)
+  }
+  .deliv a:hover{border-color:var(--teal);background:rgba(18,181,165,.08);transform:translateX(4px)}
+  .deliv .t{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.03em;font-size:1rem}
+  .deliv .d{font-size:.86rem;color:var(--muted);font-family:var(--mono)}
+  .deliv .arw{color:var(--teal);font-family:var(--mono)}
+  .badge{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--amber);color:var(--amber);padding:3px 8px;white-space:nowrap}
+
+  /* repo / final */
+  .final{text-align:center;padding:96px 0}
+  .final .repo{
+    display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:.86rem;
+    border:1px solid var(--line-strong);padding:16px 26px;text-decoration:none;margin:8px 8px 0;transition:.22s
+  }
+  .final .repo:hover{border-color:var(--teal);color:var(--teal)}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.04em}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> skills-gemini · tí</div>
+    <ul>
+      <li><a href="#concepto">Concepto</a></li>
+      <li><a href="#anatomia">Anatomía</a></li>
+      <li><a href="#ciclo">Ciclo</a></li>
+      <li><a href="#skill">La Skill</a></li>
+      <li><a href="#entregables">Entregables</a></li>
+      <li><a href="#repo">Repo</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">Actividad de Seguimiento · Ingeniería de Sistemas / TI</p>
+      <h1>Skills<br>integrados a <em>Gemini</em><span class="amber">.</span></h1>
+      <p class="lede">Convertimos el criterio del ingeniero de sistemas en un procedimiento que un agente de IA ejecuta de forma consistente: inventaría con evidencia, evalúa con rúbrica y entrega un informe accionable.</p>
+      <div class="cta">
+        <a class="btn solid" href="#skill">Ver la Skill →</a>
+        <a class="btn" href="#entregables">Entregables</a>
+      </div>
+    </div>
+    <div class="term">
+      <div class="bar"><i></i><i></i><i></i><span style="margin-left:8px">auditor-tecnico-proyectos</span></div>
+      <pre><span class="c">$</span> gemini /auditar <span class="t">./mi-proyecto</span>
+<span class="ok">✓</span> inventario · <span class="t">inventoría completa</span>
+   archivos: 128   líneas: 9.412
+   lenguajes: TypeScript, Python, SQL
+<span class="ok">✓</span> evaluación · <span class="t">8/8 dimensiones</span>
+   seguridad ......... <span class="a">2</span>/5
+   escalabilidad ..... 4/5
+<span class="ok">✓</span> informe · <span class="t">priorizado</span>
+   <span class="a">●</span> ALTA  .env versionado
+   <span class="a">●</span> MEDIA dependencias sin lock
+   <span class="ok">→</span> plan de mejora generado</pre>
+    </div>
+  </div>
+</header>
+
+<section id="concepto">
+  <div class="wrap">
+    <p class="sec-num">[ 01 ] ¿Qué es una Skill?</p>
+    <h2>Conocimiento <em>procedimental</em>, no código suelto.</h2>
+    <p class="sub">Una Skill es un paquete reutilizable que extiende lo que un agente puede hacer. No la ejecuta el modelo: la lee y la sigue. Aporta tres cosas.</p>
+    <div class="cards">
+      <div class="card reveal"><span class="num">/ 01</span><h3>Instrucciones</h3><p>Protocolos explícitos de cómo abordar una tarea concreta, paso a paso y con criterios de término.</p></div>
+      <div class="card reveal"><span class="num">/ 02</span><h3>Buenas prácticas</h3><p>Convenciones, checklists y estándares del dominio que garantizan rigor y consistencia.</p></div>
+      <div class="card reveal"><span class="num">/ 03</span><h3>Recursos</h3><p>Scripts y esquemas auxiliares que el agente ejecuta o consulta bajo demanda, como <code>scripts/</code>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="anatomia">
+  <div class="wrap">
+    <p class="sec-num">[ 02 ] Anatomía</p>
+    <h2>Formato abierto: <em>SKILL.md</em></h2>
+    <p class="sub">Estándar adoptado por Google Antigravity y el agente de la Gemini API. Una carpeta, un manifiesto y recursos opcionales.</p>
+    <div class="folder reveal">
+      <pre><b>auditor-tecnico-proyectos/</b>
+├── <b>SKILL.md</b>          <span class="dim"># requerido</span>
+├── <b>scripts/</b>          <span class="dim"># código determinista</span>
+├── <b>references/</b>       <span class="dim"># rúbricas</span>
+└── <b>assets/</b>           <span class="dim"># plantillas</span></pre>
+      <div>
+        <p>El <b>frontmatter YAML</b> define el <code>name</code> y la <code>description</code>: la descripción es el mecanismo de disparo, declara qué hace la Skill y cuándo debe usarse.</p>
+        <p>El runtime escanea <code>.agents/skills/</code> en el workspace y <code>~/.gemini/config/skills/</code> de forma global; las Skills se autodescubren.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ciclo">
+  <div class="wrap">
+    <p class="sec-num">[ 03 ] Ciclo de vida</p>
+    <h2>Divulgación <em>progresiva</em></h2>
+    <p class="sub">El agente no carga todo siempre: descubre, activa solo lo relevante y ejecuta.</p>
+    <div class="cycle">
+      <div class="step reveal"><h3>Descubrimiento</h3><p>Al iniciar, el agente ve la lista de Skills con su nombre y descripción.</p></div>
+      <div class="step reveal"><h3>Activación</h3><p>Si la descripción encaja con la tarea, lee el SKILL.md completo.</p></div>
+      <div class="step reveal"><h3>Ejecución</h3><p>Sigue las instrucciones mientras trabaja. Invocación autónoma o manual.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="skill">
+  <div class="wrap">
+    <p class="sec-num">[ 04 ] La Skill</p>
+    <h2><em>auditor-tecnico-proyectos</em></h2>
+    <p class="sub">Un flujo de tres pasos con criterios de término verificables. Primero medir, después juzgar.</p>
+    <div class="skill-grid">
+      <ul class="flow">
+        <li><span class="tag">Paso 1</span><div><b>Inventaría con evidencia</b><span>Ejecuta el escáner determinista: cuenta archivos y líneas por lenguaje, detecta manifiestos y señales objetivas de riesgo. Nunca opina sin datos.</span></div></li>
+        <li><span class="tag">Paso 2</span><div><b>Evalúa cada dimensión</b><span>Recorre una rúbrica de 8 dimensiones —estructura, dependencias, seguridad, escalabilidad, calidad, observabilidad, documentación y mantenibilidad— anclando cada nota a un hecho.</span></div></li>
+        <li><span class="tag">Paso 3</span><div><b>Emite el informe</b><span>Aplica una plantilla fija: resumen ejecutivo, hallazgos por severidad y un plan priorizado por impacto × esfuerzo.</span></div></li>
+      </ul>
+      <div class="code-block reveal">
+        <div class="bar"><span>escanear_proyecto.py</span><span>python 3 · stdlib</span></div>
+        <pre><span class="c">$</span> python scripts/escanear_proyecto.py \
+    <span class="t">./proyecto</span> --json reporte.json
+
+{
+  <span class="t">"total_archivos"</span>: 128,
+  <span class="t">"total_lineas_codigo"</span>: 9412,
+  <span class="t">"senales_riesgo"</span>: {
+    <span class="t">"env_versionado"</span>: [<span class="a">".env"</span>],
+    <span class="t">"pendientes"</span>: 6
+  }
+}</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="entregables">
+  <div class="wrap">
+    <p class="sec-num">[ 05 ] Entregables</p>
+    <h2>Del <em>hallazgo</em> al informe</h2>
+    <p class="sub">Documentación completa del proyecto: investigación, desarrollo, cuaderno de datos y briefs para los materiales generados con ChatGPT y Flow.</p>
+    <div class="deliv">
+      <a href="docs/01-investigacion-skills-gemini.md"><span><span class="t">Investigación</span><br><span class="d">Skills en el ecosistema Gemini</span></span><span class="arw">→</span></a>
+      <a href="docs/02-desarrollo-skill.md"><span><span class="t">Desarrollo de la Skill</span><br><span class="d">Decisiones, pruebas, límites</span></span><span class="arw">→</span></a>
+      <a href="notebooks/cuaderno_datos.ipynb"><span><span class="t">Cuaderno de datos</span><br><span class="d">.ipynb · gráficos y análisis</span></span><span class="arw">→</span></a>
+      <a href=".agents/skills/auditor-tecnico-proyectos/SKILL.md"><span><span class="t">SKILL.md</span><br><span class="d">La Skill en formato estándar</span></span><span class="arw">→</span></a>
+      <a href="docs/03-brief-infografia-chatgpt.md"><span><span class="t">Brief · Infografía</span> <span class="badge">ChatGPT</span><br><span class="d">Contenido y prompt listos</span></span><span class="arw">→</span></a>
+      <a href="docs/04-guion-video-flow.md"><span><span class="t">Guion · Video corto</span> <span class="badge">Flow</span><br><span class="d">Escenas y prompt listos</span></span><span class="arw">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="repo" class="final">
+  <div class="wrap">
+    <p class="sec-num">[ 06 ] Repositorio</p>
+    <h2>Código, Skill y <em>documentación</em></h2>
+    <p class="sub" style="margin-left:auto;margin-right:auto">Proyecto publicado en GitHub bajo licencia MIT. Clona, instala la Skill y audita tus propios proyectos.</p>
+    <a class="repo" href="https://github.com/snflx/skill-asistente-profesional">⌥ github.com/snflx/skill-asistente-profesional</a>
+    <a class="repo" href="README.md">▤ README.md</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Skills integrados a Gemini · Ingeniería de Sistemas / TI</span>
+    <span>Actividad de Seguimiento · 2026</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        e.target.style.transitionDelay = (e.target.dataset.d || 0)+"ms";
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.16});
+  document.querySelectorAll(".reveal, .card, .step").forEach((el,i)=>{
+    el.classList.add("reveal");
+    if(el.classList.contains("card")||el.classList.contains("step")) el.dataset.d = (i%3)*90;
+    io.observe(el);
+  });
+</script>
+</body>
+</html>

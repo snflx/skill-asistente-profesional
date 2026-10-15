@@ -1,0 +1,47 @@
+{
+  "skill_name": "auditor-tecnico-proyectos",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Revisa la arquitectura de este repositorio y dime qué riesgos de seguridad ves. Está en C:\\proyectos\\api-pagos y usa Node con Express.",
+      "expected_output": "Inventario ejecutado, evaluación de las 8 dimensiones e informe con hallazgos de seguridad priorizados.",
+      "should_trigger": true,
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Necesito un diagnóstico técnico del stack de mi equipo antes de la reunión con gerencia: calidad, deuda técnica y mantenibilidad.",
+      "expected_output": "Informe estructurado con puntuación por dimensión y plan de mejora.",
+      "should_trigger": true,
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "¿Puedes auditar el proyecto que acabo de heredar? No sé en qué estado está, revisa todo lo que puedas.",
+      "expected_output": "Inventario con evidencia y hallazgos por severidad.",
+      "should_trigger": true,
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Documenta la arquitectura del sistema de inventario y señala puntos de mejora de escalabilidad.",
+      "expected_output": "Evaluación de las dimensiones de estructura y escalabilidad con informe final.",
+      "should_trigger": true,
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Escríbeme una función en Python que ordene una lista de diccionarios por fecha.",
+      "expected_output": "Código de ordenamiento; no debe activarse la auditoría.",
+      "should_trigger": false,
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Explícame qué es la deuda técnica en dos párrafos para una materia.",
+      "expected_output": "Explicación conceptual; no debe activarse la auditoría ni generarse informe.",
+      "should_trigger": false,
+      "files": []
+    }
+  ]
+}

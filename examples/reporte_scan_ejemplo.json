@@ -1,0 +1,20 @@
+{
+  "raiz": "C:\\Users\\Juan\\Desktop\\Proyectos\\IA_Seguimiento_2\\skill-asistente-profesional\\.agents\\skills\\auditor-tecnico-proyectos",
+  "total_archivos": 4,
+  "total_lineas_codigo": 303,
+  "archivos_por_lenguaje": {
+    "Markdown": 3,
+    "Python": 1
+  },
+  "lineas_por_lenguaje": {
+    "Markdown": 166,
+    "Python": 137
+  },
+  "manifiestos": [],
+  "senales_riesgo": {
+    "env_versionado": [],
+    "posibles_secretos": [],
+    "pendientes": 6,
+    "archivos_pesados": []
+  }
+}
